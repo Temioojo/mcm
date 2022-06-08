@@ -1,0 +1,59 @@
+aws_vpc.mcm: Refreshing state... [id=vpc-05c967ab9d0e3478a]
+aws_subnet.public_subnet1: Refreshing state... [id=subnet-0b4a2abb673a2ffec]
+aws_subnet.db_subnet: Refreshing state... [id=subnet-03fd7035d5abf498e]
+aws_subnet.private_subnet: Refreshing state... [id=subnet-00daf80da39de5bfb]
+aws_subnet.public_subnet: Refreshing state... [id=subnet-077122dbd2045c0a8]
+aws_subnet.private_subnet1: Refreshing state... [id=subnet-0eb72482a96e67555]
+aws_internet_gateway.gw: Refreshing state... [id=igw-0931fd26e86a1bc59]
+aws_subnet.db_subnet1: Refreshing state... [id=subnet-0674f44ed97f994d4]
+aws_instance.mcm_server: Refreshing state... [id=i-0bdb59104ceaa28d4]
+aws_instance.mcm_server1: Refreshing state... [id=i-0ab0d9545aaed1388]
+aws_instance.mcm_server2: Refreshing state... [id=i-023268fada51ef6d0]
+aws_eip.mcm_server2: Refreshing state... [id=eipalloc-045e1076ac6febcba]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the
+last "terraform apply":
+
+  # aws_internet_gateway.gw has been changed
+  ~ resource "aws_internet_gateway" "gw" {
+        id       = "igw-0931fd26e86a1bc59"
+      + tags     = {}
+        # (4 unchanged attributes hidden)
+    }
+  # aws_eip.mcm_server2 has been changed
+  ~ resource "aws_eip" "mcm_server2" {
+        id                   = "eipalloc-045e1076ac6febcba"
+      + tags                 = {}
+        # (13 unchanged attributes hidden)
+    }
+  # aws_instance.mcm_server2 has been changed
+  ~ resource "aws_instance" "mcm_server2" {
+      ~ associate_public_ip_address          = false -> true
+        id                                   = "i-023268fada51ef6d0"
+      + public_ip                            = "174.129.255.99"
+        tags                                 = {
+            "Name" = "MCMCG_web"
+        }
+        # (27 unchanged attributes hidden)
+
+
+
+
+
+
+        # (6 unchanged blocks hidden)
+    }
+
+Unless you have made equivalent changes to your configuration, or ignored the
+relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+No changes. Your infrastructure matches the configuration.
+
+Your configuration already matches the changes detected above. If you'd like
+to update the Terraform state to match, create and apply a refresh-only plan:
+  terraform apply -refresh-only
